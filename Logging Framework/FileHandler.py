@@ -1,12 +1,13 @@
-from logger import Logger
+from log_handler import LogHandler
 
 
-class FileLogger(Logger):
+class FileHandler(LogHandler):
 
-    def __init__(self, path, level, content):
-        super().__init__(level, content)
+    def __init__(self, path, level):
+        super().__init__(level)
         self.path = path
 
-    def write(self, content):
+    def write(self, message):
         with open(self.path, "a") as file:
-            file.write(str(content) + "/n")
+            file.write(f"{message.timestamp} - {message.log_level} - {message.content}\n")
+            print(f"message appended to file {self.path}")

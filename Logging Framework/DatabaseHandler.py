@@ -1,11 +1,11 @@
-from logger import Logger
+from log_handler import LogHandler
 
 
-class DatabaseLogger(Logger):
+class DatabaseHandler(LogHandler):
 
-    def __init__(self, url, level, content):
-        super().__init__(level, content)
+    def __init__(self, url, level):
+        super().__init__(level)
         self.url = url
 
     def write(self, content):
-        print(f"writing to database")
+        print(f"message stored in database")

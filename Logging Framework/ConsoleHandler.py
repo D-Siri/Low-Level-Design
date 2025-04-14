@@ -1,5 +1,7 @@
-from logger import Logger
-class ConsoleLogger(Logger):
+from log_handler import LogHandler
 
-    def write(self, content):
-        print(content)
+
+class ConsoleHandler(LogHandler):
+
+    def write(self, message):
+        print(f"message logged to console")

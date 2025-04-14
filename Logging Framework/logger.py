@@ -1,19 +1,19 @@
-from logger import Logger
+
+from log_message import LogMessage
 
 
-class LogConfig:
-    def __init__(self, log_level, logger):
-        self.log_level = log_level
-        self.logger = logger
+class Logger:
+    def __init__(self):
+        self.handler = None
 
-    def set_log_level(self, log_level):
-        self.log_level = log_level
+    def set_handler(self, handler):
+        self.handler = handler
 
-    def get_log_level(self):
-        return self.log_level
+    def log(self, level, message):
+        message = LogMessage(message, level)
+        if self.handler:
+            self.handler.handle(message)
 
-    def set_logger(self, logger):
-        self.logger = logger
 
-    def get_logger(self):
-        return self.logger
+
+
